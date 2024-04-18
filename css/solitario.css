@@ -1,0 +1,236 @@
+/**
+	Especificaciones CSS para el juego del solitario 
+*/
+
+/* /*** !!!!!!!!!!!!!!!!!!! CÓDIGO !!!!!!!!!!!!!!!!!!!! 
+	Completar los estilos que faltan y modificar al gusto del alumno
+**/
+
+body{
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.imagen-logo{
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.imagen-logo img{
+	width: 200px;
+}
+
+#cont_puntuaciones{
+	margin-left: 10px;
+}
+
+.center.mt{
+	margin-top: 15px;
+}
+
+/* ----------- */
+/* Animaciones */
+/* ----------- */
+.rotarExito {
+	animation: rotarImagenY 0.5s ease-in-out infinite;
+}
+
+@keyframes rotarImagenY {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {
+		transform: rotateY(360deg);
+	}
+}
+
+.rotarFallo {
+	animation: rotarImagenZ 0.2s ease-in-out infinite;
+}
+  
+@keyframes rotarImagenZ {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	25% {
+		transform: rotateZ(-20deg);
+	}
+	50% {
+		transform: rotateZ(0deg);
+	}
+	75% {
+		transform: rotateZ(20deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
+}
+
+.animacionGanar1{
+	animation: ganarIzq 3s ease forwards;
+}
+
+.animacionGanar2{
+	animation: ganarDer 3s ease forwards;
+}
+
+/* Basada en la animacion de victoria del solitario del windows xp :) */
+@keyframes ganarIzq {
+	0% {
+		transform: translateX(0) translateY(0);
+	}
+	10% {
+		transform: translateX(-20px) translateY(300px);
+	}
+	20% {
+		transform: translateX(-40px) translateY(50px);
+	}
+	30% {
+		transform: translateX(-60px) translateY(300px);
+	}
+	40% {
+		transform: translateX(-80px) translateY(150px);
+	}
+	50% {
+		transform: translateX(-100px) translateY(300px);
+	}
+	60% {
+		transform: translateX(-120px) translateY(200px);
+	}
+	70% {
+		transform: translateX(-140px) translateY(300px);
+	}
+	80% {
+		transform: translateX(-160px) translateY(250px);
+	}
+	90% {
+		transform: translateX(-180px) translateY(300px);
+		opacity: 100%;
+	}
+	100% {
+		transform: translateX(-180px) translateY(300px);
+		opacity: 0;
+	}
+}
+
+/* Dos posiciones distintas para que no vayan siempre al mismo lado */
+@keyframes ganarDer {
+	0% {
+		transform: translateX(0) translateY(0);
+	}
+	10% {
+		transform: translateX(20px) translateY(300px);
+	}
+	20% {
+		transform: translateX(40px) translateY(50px);
+	}
+	30% {
+		transform: translateX(60px) translateY(300px);
+	}
+	40% {
+		transform: translateX(80px) translateY(150px);
+	}
+	50% {
+		transform: translateX(100px) translateY(300px);
+	}
+	60% {
+		transform: translateX(120px) translateY(200px);
+	}
+	70% {
+		transform: translateX(140px) translateY(300px);
+	}
+	80% {
+		transform: translateX(160px) translateY(250px);
+	}
+	90% {
+		transform: translateX(180px) translateY(300px);
+		opacity: 100%;
+	}
+	100% {
+		transform: translateX(180px) translateY(300px);
+		opacity: 0;
+	}
+}
+
+
+/* Todos los contadores estarán ubicados en la parte inferior 
+   derecha (position absolute) de los respectivos tapetes (position relative).
+*/
+.contador {
+	position: absolute;
+	bottom: 0px;
+	right: 3px;
+}
+
+
+/* Centrado del título y color */
+h1#titulo {
+	text-align: center;
+	color: #E65014;
+}
+
+/* Centrado de los marcadores de tiempo y movimientos */
+h2#marcadores{ 
+	text-align: center; 
+}
+
+/* Mesa que contiene a los tapetes centrados */
+div#mesa{
+	text-align: center;
+	margin:20px;
+}
+
+/* Todos los tapetes con position relative para que
+   los respectivos mazos (arrays de <img>) puedan
+   posicionarse de manera absoluta respecto a ellos */
+div.tapete{
+	display: inline-block;
+	position: relative;
+	margin: 10px;
+}
+
+/* Dimensiones y color de fondo para el tapete inicial */
+div.tapete#inicial{
+	width: 340px;
+	height: 340px;
+	background-image: url('../imagenes/inicial.png');			
+	background-color: lightgrey;
+	border-radius: 15px;
+}
+
+/* Dimensiones para todos los tapetes salvo el inicial */
+div.tapete:not(#inicial){				
+	height: 125px;
+	width: 100px;
+}
+
+/* Color de fondo para el tapete de las cartas sobrantes */
+div.tapete#sobrantes{
+	background-color: lightblue;
+	background-image: url('../imagenes/sobrantes.png');	
+	border-radius: 15px;
+}
+
+/* Color de fondo de los tapetes receptores */
+div.tapete.receptor{
+	background-color: lightgreen;
+	background-image: url('../imagenes/receptores.png');	
+	border-radius: 15px;
+}
+
+.center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* Estilo cartas */
+.carta{
+	position: absolute;
+	width: 65px;
+	top: 0;
+	left: 0;
+}
